@@ -41,18 +41,6 @@ var sttConfig = {
 var sttCredentials = extend(sttConfig, bluemix.getServiceCreds('speech_to_text'));
 var sttAuthorization = watson.authorization(sttCredentials);
 
-// do it again for text to speech
-var ttsConfig = {
-    version: 'v1',
-    url: 'https://stream.watsonplatform.net/text-to-speech/api',
-    username: process.env.TTS_USERNAME,
-    password: process.env.TTS_PASSWORD
-};
-
-// if bluemix credentials exist, then override local
-var ttsCredentials = extend(ttsConfig, bluemix.getServiceCreds('text_to_speech'));
-var ttsAuthorization = watson.authorization(ttsCredentials);
-
 // Setup static public directory
 app.use(express.static(path.join(__dirname , './public')));
 
@@ -67,19 +55,6 @@ app.get('/token/stt', function(req, res) {
     res.send(token);
   });
 });
-
-app.get('/token/tts', function(req, res) {
-    ttsAuthorization.getToken({url: ttsCredentials.url}, function(err, token) {
-        if (err) {
-            console.log('error:', err);
-            res.status(err.code);
-        }
-
-        res.send(token);
-    });
-});
-
-
 
 // Add error handling in dev
 if (!process.env.VCAP_SERVICES) {

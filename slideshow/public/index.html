@@ -35,25 +35,72 @@ Serif - Blood - Night - Moon - Solarized -->
       text-transform: uppercase;
       box-sizing: border-box;
     }
+    body {
+      background-color: black;
+      background-image: url("/images/Watson.png");
+      background-size: contain;
+      background-position: right;
+      background-repeat: no-repeat;
+    }
+
+    /* make the text easier to read on that background*/
+    h1, h2, p, li, a {
+      text-shadow: 1px 0 20px  #002B36 !important;
+    }
+    a {
+      background-color: rgba(0,0,0,0.5);
+      color: #78BAE6 !important;
+    }
+    a:hover, a:active, a:focus {
+      color: white !important;
+    }
+
+    .biglink {
+      font-size: 200%;
+    }
   </style>
 </head>
 <body>
 <div class="reveal">
   <div class="slides">
+
     <section>
       <h1>Speech to Text and IoT</h1>
       <p>With Nathan Friedly and IBM Watson</p>
       <p><button id="recordButton" type="button">Get Started</button></p>
     </section>
+
     <section>
       <h2>Quick Intro</h2>
-      <p class="fragment" style="text-align:center"><a href="https://xkcd.com/149/"><img src="https://imgs.xkcd.com/comics/sandwich.png" alt="Proper User Policy apparently means Simon Says."></a></p>
-    </section>
+      <div style="text-align: left">
+        <h3 class="fragment" style="float: right"><a href="https://xkcd.com/149/"><img src="https://imgs.xkcd.com/comics/sandwich.png" alt="Proper User Policy apparently means Simon Says."></a></h3>
+        <h3>Nathan Friedly</h3>
+        <p>Web developer with an IoT habit</p>
+        <h3>IBM Watson Developer Cloud</h3>
+        <p>A collection of APIs</p>
+        <!-- p><b>Speech to Text</b> is one of those APIs</p -->
+      </div>
+   </section>
+
     <section>
-      <h2>URLS</h2>
-      <p><a href="#">more info</a></p>
+      <h2>The one URL you need</h2>
+      <p class="biglink"><a target="_blank" href="http://go.alchemyapi.com/get-started-with-watson-techcrunch-hackathon">go.alchemyapi.com/get-started-with-watson-techcrunch-hackathon</a></p>
     </section>
-    <!-- add stt-iot stuff here? -->
+
+    <section>
+      <h2>STT Demo app</h2>
+      <p class="biglink"><a target="_blank" href="https://speech-to-text-demo.mybluemix.net/">https://speech-to-text-demo.mybluemix.net/</a></p>
+    </section>
+
+    <section>
+      <h2>STT &amp; IoT demo</h2>
+      <ul>
+        <li><a target="_blank" href="http://localhost:4000/">Demo</a></li>
+        <li><a target="_blank" href="http://watson-iot.mybluemix.net/red/">Node Red</a></li>
+        <li>github</li>
+      </ul>
+    </section>
+
     <!-- videos -->
     <section>
       <h2>The End</h2>

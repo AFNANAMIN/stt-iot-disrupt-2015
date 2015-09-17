@@ -60,7 +60,6 @@ exports.initSocket = function initSocket(options, onopen, onlistening, onmessage
     console.log("WS onmessage", evt);
     var msg = JSON.parse(evt.data);
     if (msg.error) {
-      showError(msg.error);
       eventbus.publish('hardsocketstop');
       return;
     }

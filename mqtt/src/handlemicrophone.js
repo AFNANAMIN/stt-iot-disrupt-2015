@@ -57,12 +57,12 @@ exports.handleMicrophone = function(token, model, mic, callback) {
       if (matches(alternatives, ['on', 'own', 'olin', 'so'])) {
         lightbulb.on();
         req && req.abort();
-        req = $.post('http://watson-iot.mybluemix.net/led', {on: true});
+        req = $.getJSON('http://watson-iot.mybluemix.net/led?on=true&callback=?', console.log);
       }
       else if (matches(alternatives, ['off'])) {
         lightbulb.off();
         req && req.abort();
-        req = $.post('http://watson-iot.mybluemix.net/led', {on: false});
+        req = $.getJSON('http://watson-iot.mybluemix.net/led?on=false&callback=?', console.log);
       }
 
     }
