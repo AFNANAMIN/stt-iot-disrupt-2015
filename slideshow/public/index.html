@@ -61,6 +61,14 @@ Serif - Blood - Night - Moon - Solarized -->
     .biglink, .biglink a {
       font-size: 200%;
     }
+
+    li {
+      margin-bottom: 20px !important;
+    }
+
+    .reveal {
+      color: lavender;
+    }
   </style>
 </head>
 <body>
@@ -74,16 +82,17 @@ Serif - Blood - Night - Moon - Solarized -->
     </section>
 
     <section>
-      <h2>Quick Intro</h2>
+      <h2>Nathan Friedly</h2>
       <div style="text-align: left">
-        <h3 class="fragment" style="float: right"><a href="https://xkcd.com/149/"><img src="https://imgs.xkcd.com/comics/sandwich.png" alt="Proper User Policy apparently means Simon Says."></a></h3>
-        <h3>Nathan Friedly</h3>
+        <img style="float: right; margin-left: 30px; max-width: 40%" src="/images/nathan-stash.jpg" alt="nathan with a killer 'stache">
+        <p>Husband, Father, Minister</p>
         <p>Web developer with an IoT habit</p>
-        <h3>IBM Watson Developer Cloud</h3>
-        <p>A collection of APIs</p>
-        <!-- p><b>Speech to Text</b> is one of those APIs</p -->
-        <!-- also mention iot foundation (?) -->
+        <p><a href="http://nfriedly.com">nfriedly.com</a></p>
       </div>
+    </section>
+
+    <section>
+      <a href="https://xkcd.com/149/"><img src="https://imgs.xkcd.com/comics/sandwich.png" alt="Proper User Policy apparently means Simon Says." width="720"></a>
     </section>
 
     <section class="shade">
@@ -97,6 +106,14 @@ Serif - Blood - Night - Moon - Solarized -->
       <p><small>Hint: The answers will be mentioned during this presentation, so pay attention (and maybe take notes!)</small></p>
     </section>
 
+    <section class="shade">
+      <h2>STT, IoT?</h2>
+      <ul>
+        <li><b>IBM Watson Developer Cloud</b>: A collection of APIs</li>
+        <li><b>Watson Speech to Text Service</b>: Transcription API for spoken English, Spanish, and Japanese</li>
+        <li><b>IBM Internet of Things Foundation</b>: Central service for connecting devices over the MQTT protocol</li>
+      </ul>
+    </section>
 
     <section>
       <h2>The one URL you need</h2>
@@ -104,8 +121,17 @@ Serif - Blood - Night - Moon - Solarized -->
     </section>
 
     <section>
-      <h2>STT Demo app</h2>
-      <p class="biglink"><a target="_blank" href="https://speech-to-text-demo.mybluemix.net/">https://speech-to-text-demo.mybluemix.net/</a></p>
+
+      <section>
+        <h2>STT Demo app</h2>
+        <p class="biglink"><a target="_blank" href="https://speech-to-text-demo.mybluemix.net/">https://speech-to-text-demo.mybluemix.net/</a></p>
+      </section>
+
+      <section>
+        <iframe width="960" height="595" src="https://www.youtube.com/embed/92CDJ2P0vAo" frameborder="0" allowfullscreen></iframe>
+        <p><a href="https://www.youtube.com/watch?v=92CDJ2P0vAo">https://www.youtube.com/watch?v=92CDJ2P0vAo</a></p>
+      </section>
+
     </section>
 
     <section>
@@ -117,8 +143,9 @@ Serif - Blood - Night - Moon - Solarized -->
     <section>
       <h2>STT &amp; IoT demo</h2>
       <ul>
-        <li><a target="_blank" href="http://localhost:4000/">Demo</a></li>
+        <li><a target="_blank" href="http://http://speech-to-text-iot-demo.mybluemix.net//">Demo</a></li>
         <li><a target="_blank" href="http://watson-iot.mybluemix.net/red/">Node Red</a></li>
+        <li><a target="_blank" href="https://console.ng.bluemix.net/?direct=classic/#/resources/serviceGuid=ab6e7304-ca2b-45ec-82c0-3600e6dc9ba6&orgGuid=c5bda161-4302-420f-8268-7c93697e7927&spaceGuid=f0981fa8-bec8-4304-a005-7f96663ca079&paneId=0">IoT service on Bluemix</a></li>
         <li><a target="_blank" href="https://github.com/watson-developer-cloud/stt-iot-disrupt-2015">Github</a></li>
       </ul>
     </section>
@@ -132,6 +159,9 @@ Serif - Blood - Night - Moon - Solarized -->
     </section>
   </div>
 </div>
+
+<audio id="sayno" src="/synthesize?voice=en-US_MichaelVoice&X-WDC-PL-OPT-OUT=0&text=No%2C%20change%20it%20yourself" preload="auto"></audio>
+
 <script src="//cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>

@@ -2,6 +2,7 @@
 'use strict';
 
 var initSocket = require('./socket').initSocket;
+var say = require('./say.js');
 
 exports.handleMicrophone = function(token, model, mic, callback) {
 
@@ -45,26 +46,25 @@ exports.handleMicrophone = function(token, model, mic, callback) {
   }
 
   // don't tell the same joke twice ;)
-  var state = 0;
+  var current = 0;
 
   function onMessage(msg, socket) {
     console.log('Mic socket msg: ', msg);
     if (msg.results && msg.results[0].alternatives.length) {
       var result = msg.results[0];
       var alternatives = result.alternatives;
-      if (state < 1 && matches(alternatives, ['next slide'])) {
-        state = 1;
-        // todo: play "no, do it yourself" or something along those lines
-        Reveal.next(); // reveals XKCD comic
+      if (current < 1 && matches(alternatives, ['next slide'])) {
+        current = 1;
+        $('#sayno')[0].play();
       }
       // watson doesn't understand the word "sudo", so we're going to accept a few different variations
-      else if (state < 2 && result.final && matches(alternatives, ['sudo next slide', 'sue do next slide', 'see you next slide', 'su you next slide', 'sue you next slide', 'sooner next slide', 'soon do next slide'])) {
-        state = 2;
+      else if (current == 1 && matches(alternatives, ['sudo next slide', 'sue do next slide', 'see you next slide', 'su you next slide', 'sue you next slide', 'sooner next slide', 'soon do next slide'])) {
+        current = msg.result_index;
         Reveal.next();
       }
-
-      // don't let the joke get old - but now only process final results so that we don't do the same action repeatedly for each word
-      else if (state >= 2 && result.final && matches(alternatives, ['next slide'])) {
+      // don't let the joke get old - but now check the result_index so that we don't advance twice for a single chunk of audio (interim and final results)
+      else if (current >= 2 && (current < msg.result_index) && matches(alternatives, ['next slide'])) {
+        current = msg.result_index;
         Reveal.next();
       }
     }

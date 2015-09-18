@@ -52,6 +52,8 @@ var ttsConfig = {
 // if bluemix credentials exist, then override local
 var ttsCredentials = extend(ttsConfig, bluemix.getServiceCreds('text_to_speech'));
 var ttsAuthorization = watson.authorization(ttsCredentials);
+var textToSpeech = watson.text_to_speech(ttsCredentials);
+
 
 // Setup static public directory
 app.use(express.static(path.join(__dirname , './public')));
@@ -79,12 +81,23 @@ app.get('/token/tts', function(req, res) {
     });
 });
 
-
+app.get('/synthesize', function(req, res) {
+    var transcript = textToSpeech.synthesize(req.query);
+    transcript.on('response', function(response) {
+        if (req.query.download) {
+            response.headers['content-disposition'] = 'attachment; filename=transcript.ogg';
+        }
+    });
+    transcript.on('error', function(error) {
+        console.log('Synthesize error: ', error)
+    });
+    transcript.pipe(res);
+});
 
 // Add error handling in dev
 if (!process.env.VCAP_SERVICES) {
   app.use(errorhandler());
 }
-var port = process.env.VCAP_APP_PORT || 3000;
+var port = process.env.VCAP_APP_PORT || 2000;
 app.listen(port);
 console.log('listening at:', port);
