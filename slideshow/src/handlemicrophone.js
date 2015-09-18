@@ -58,7 +58,7 @@ exports.handleMicrophone = function(token, model, mic, callback) {
         Reveal.next(); // reveals XKCD comic
       }
       // watson doesn't understand the word "sudo", so we're going to accept a few different variations
-      else if (state < 2 && results.final && matches(alternatives, ['sudo next slide', 'sue do next slide', 'see you next slide', 'su you next slide', 'sue you next slide', 'sooner next slide', 'soon do next slide'])) {
+      else if (state < 2 && result.final && matches(alternatives, ['sudo next slide', 'sue do next slide', 'see you next slide', 'su you next slide', 'sue you next slide', 'sooner next slide', 'soon do next slide'])) {
         state = 2;
         Reveal.next();
       }

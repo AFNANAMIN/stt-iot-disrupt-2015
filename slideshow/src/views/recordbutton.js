@@ -15,16 +15,12 @@ exports.initRecordButton = function(ctx) {
   var mic = new Microphone(micOptions);
 
   var recordButton = $('#recordButton');
+  var stopButton = $('#stopButton');
 
   recordButton.click(function(evt) {
-      // Prevent default anchor behavior
-      evt.preventDefault();
-
-      var currentModel = localStorage.getItem('currentModel');
-
       if (!running) {
         console.log('Not running, handleMicrophone()');
-        handleMicrophone(token, currentModel, mic, function(err, socket) {
+        handleMicrophone(token, ctx.currentModel, mic, function(err, socket) {
           if (err) {
             var msg = 'Error: ' + err.message;
             console.log(msg);
@@ -33,13 +29,17 @@ exports.initRecordButton = function(ctx) {
             console.log('starting mic');
             mic.record();
             running = true;
-            Reveal.right();
+            mic.onStartRecording = function() {
+              Reveal.right();
+            }
           }
         });
-      } else {
-        console.log('Stopping microphone, sending stop action message');
-        mic.stop();
-        running = false;
       }
   });
+
+  stopButton.click(function() {
+    console.log('Stopping microphone, sending stop action message');
+    mic.stop();
+    running = false;
+  })
 };
