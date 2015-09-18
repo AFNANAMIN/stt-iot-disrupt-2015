@@ -44,8 +44,8 @@ and update the two IBM IoT nodes to have your devices MAC address for the ID (do
 Edit the two `req = $.getJSON(...` lines in `web/src/handlemicrophone.js` to change to domain name to your Node-RED instance. 
 Then run:
 
-  npm install
-  npm build
+    npm install
+    npm build
   
 (This step requires [node.js](nodejs.org/).)
 
