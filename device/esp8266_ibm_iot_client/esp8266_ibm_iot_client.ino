@@ -13,7 +13,7 @@ const char* wifi_password = "<YOUR WIFI PASSWORD>";
 // for a private instance, create an IoT service instance in Iluemix, bind to an app, click show credentials
 const char* username = null; // Set to null for Quickstart or "use-token-auth" for token authentication
 const char* password = null; // optional. Token goes here for token auth.
-const char* clientId = "d:<YOUR ORG ID OR quickstart>:esp8266:<YOUR DEVICE'S MAC ADDRESS>"; // change second part to orgId and last part to mac address - WiFi.macAddress() but without the colons
+const char* client_id = "d:<YOUR ORG ID OR quickstart>:esp8266:<YOUR DEVICE'S MAC ADDRESS>"; // change second part to orgId and last part to mac address - WiFi.macAddress() but without the colons
 const char* mqtt_server = "<YOUR ORG ID OR quickstart>.messaging.internetofthings.ibmcloud.com";
 
 
@@ -77,7 +77,7 @@ void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
     // Attempt to connect
-    if (client.connect(clientId, username, password)) {
+    if (client.connect(client_id, username, password)) {
       Serial.println("connected");
       // Once connected, publish an announcement...
       client.publish("iot-2/evt/status/fmt/json", "{\"d\": {\"data\":1}}");
