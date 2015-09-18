@@ -58,7 +58,7 @@ exports.handleMicrophone = function(token, model, mic, callback) {
         $('#sayno')[0].play();
       }
       // watson doesn't understand the word "sudo", so we're going to accept a few different variations
-      else if (current == 1 && matches(alternatives, ['sudo next slide', 'sue do next slide', 'see you next slide', 'su you next slide', 'sue you next slide', 'sooner next slide', 'soon do next slide'])) {
+      else if (current == 1 && matches(alternatives, ['sudo next slide', 'sue do next slide', 'see you next slide', 'su you next slide', 'sue you next slide', 'sooner next slide', 'soon do next slide', 'soon next slide', 'sue next slide', 'to do next slide'])) {
         current = msg.result_index;
         Reveal.next();
       }

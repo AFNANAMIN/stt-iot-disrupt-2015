@@ -1,6 +1,8 @@
 # stt-iot-disrupt-2015
 Slides and code from the Speech to Text & IoT talk at TechCrunch's 2015 Disrupt SF Hackathon
 
+See a video of the demo in action at https://www.youtube.com/watch?v=92CDJ2P0vAo
+
 ## Setting up the demo
 
 There are a few different moving parts in this demo: 
